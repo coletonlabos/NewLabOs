@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, GeistMono } from "next/font/geist";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 
-const geistSans = Geist({
+const geistSans = GeistSans({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
