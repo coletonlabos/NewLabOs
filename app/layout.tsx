@@ -1,7 +1,8 @@
+import React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import { CommandBar } from "@/src/components/CommandBar"
+import { CommandBar } from "../src/components/CommandBar"
 
 const inter = Inter({ subsets: ["latin"] })
 
