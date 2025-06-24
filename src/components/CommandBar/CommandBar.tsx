@@ -10,7 +10,7 @@ import {
   CommandGroup, 
   CommandItem,
   CommandSeparator 
-} from '@/components/ui/command'
+} from '../../components/ui/command'
 import {
   PlusCircle,
   CheckSquare,
