@@ -29,4 +29,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Supabase Integration
 
-This project uses Supabase for backend functionality. The schema is available in the `supabase-schema.sql` file. 
+This project uses Supabase for backend functionality. The schema is available in the `supabase-schema.sql` file. # Force rebuild
