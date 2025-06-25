@@ -464,8 +464,8 @@ export default function SupabaseTestPage() {
           <div className="mt-4">
             <p className="text-sm mb-2">
               {!tables.every(t => t.exists) 
-                ? "⚠️ Some required tables don't exist. Please run the SQL setup script in Supabase." 
-                : "✅ All required tables exist."}
+                ? '⚠️ Some required tables don\'t exist. Please run the SQL setup script in Supabase.'
+                : '✅ All required tables exist.'}
             </p>
             
             {!tables.every(t => t.exists) && (
