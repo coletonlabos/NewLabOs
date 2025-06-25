@@ -59,14 +59,12 @@ export default function SupabaseTestPage() {
         console.log('Attempting to connect to Supabase...')
         
         // First, test a simple connection with a health check
-        let pingData = null
         let pingError = null
         
         try {
           console.log('Testing connection with health check...')
           // Use a simple health check instead of querying a specific table
           const result = await clientToUse.auth.getSession()
-          pingData = result.data
           pingError = result.error
         } catch (e) {
           console.log('Connection error caught:', e)
@@ -331,7 +329,7 @@ export default function SupabaseTestPage() {
               1. Sign in with a valid user
               2. Temporarily disable RLS for testing with: ALTER TABLE objects DISABLE ROW LEVEL SECURITY;
               3. Create a bypass policy in Supabase SQL Editor: 
-                 CREATE POLICY "Bypass policy for testing" ON objects FOR INSERT TO authenticated USING (true) WITH CHECK (true);`)
+                 CREATE POLICY &quot;Bypass policy for testing&quot; ON objects FOR INSERT TO authenticated USING (true) WITH CHECK (true);`)
             throw new Error('RLS policy violation - see instructions for workarounds')
           }
           
@@ -465,9 +463,9 @@ export default function SupabaseTestPage() {
           
           <div className="mt-4">
             <p className="text-sm mb-2">
-              {!tables.every(t => t.exists) ? 
-                "⚠️ Some required tables don't exist. Please run the SQL setup script in Supabase." :
-                "✅ All required tables exist."}
+              {!tables.every(t => t.exists) 
+                ? &quot;⚠️ Some required tables don&apos;t exist. Please run the SQL setup script in Supabase.&quot; 
+                : &quot;✅ All required tables exist.&quot;}
             </p>
             
             {!tables.every(t => t.exists) && (
@@ -517,7 +515,7 @@ export default function SupabaseTestPage() {
               </li>
               <li>Create a bypass policy by running this SQL: <br/>
                 <code className="bg-gray-100 p-1 rounded block mt-1">
-                  CREATE POLICY "Bypass policy for testing" ON objects FOR INSERT TO authenticated USING (true) WITH CHECK (true);
+                  CREATE POLICY &quot;Bypass policy for testing&quot; ON objects FOR INSERT TO authenticated USING (true) WITH CHECK (true);
                 </code>
               </li>
             </ol>
