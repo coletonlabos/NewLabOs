@@ -1,3 +1,4 @@
 {
-  "rootDirectory": "lab-os"
+  "buildCommand": "cd lab-os && npm install && npm run build",
+  "outputDirectory": "lab-os/.next"
 } 
