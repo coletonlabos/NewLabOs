@@ -5,6 +5,10 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    fontFamily: {
+      sans: ['"Geist"', 'sans-serif'],
+      mono: ['"Geist Mono"', 'monospace'],
+    },
     extend: {
       colors: {
         border: "var(--color-border)",
