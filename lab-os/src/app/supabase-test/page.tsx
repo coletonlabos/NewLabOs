@@ -324,12 +324,12 @@ export default function SupabaseTestPage() {
           console.log('Insert error:', error)
           
           // If we still get RLS errors, provide guidance
-          if (error.message && error.message.includes('violates row-level security policy')) {
+          if (error && typeof error === 'object' && 'message' in error && typeof error.message === 'string' && error.message.includes('violates row-level security policy')) {
             setErrorMessage(`Row Level Security policy is preventing the insert. You need to either:
               1. Sign in with a valid user
               2. Temporarily disable RLS for testing with: ALTER TABLE objects DISABLE ROW LEVEL SECURITY;
               3. Create a bypass policy in Supabase SQL Editor: 
-                 CREATE POLICY &quot;Bypass policy for testing&quot; ON objects FOR INSERT TO authenticated USING (true) WITH CHECK (true);`)
+                  CREATE POLICY "Bypass policy for testing" ON objects FOR INSERT TO authenticated USING (true) WITH CHECK (true);`)
             throw new Error('RLS policy violation - see instructions for workarounds')
           }
           
@@ -464,8 +464,8 @@ export default function SupabaseTestPage() {
           <div className="mt-4">
             <p className="text-sm mb-2">
               {!tables.every(t => t.exists) 
-                ? &quot;⚠️ Some required tables don&apos;t exist. Please run the SQL setup script in Supabase.&quot; 
-                : &quot;✅ All required tables exist.&quot;}
+                ? "⚠️ Some required tables don't exist. Please run the SQL setup script in Supabase." 
+                : "✅ All required tables exist."}
             </p>
             
             {!tables.every(t => t.exists) && (
@@ -481,7 +481,7 @@ export default function SupabaseTestPage() {
                 
                 <div className="mt-4 pt-4 border-t border-yellow-200">
                   <p className="text-sm mb-2">
-                    <strong>Tables not showing up?</strong> If you've already created the tables but they're not being detected, you can use this override:
+                    <strong>Tables not showing up?</strong> If you have already created the tables but they are not being detected, you can use this override:
                   </p>
                   <Button 
                     onClick={overrideTables} 
@@ -515,7 +515,7 @@ export default function SupabaseTestPage() {
               </li>
               <li>Create a bypass policy by running this SQL: <br/>
                 <code className="bg-gray-100 p-1 rounded block mt-1">
-                  CREATE POLICY &quot;Bypass policy for testing&quot; ON objects FOR INSERT TO authenticated USING (true) WITH CHECK (true);
+                  CREATE POLICY "Bypass policy for testing" ON objects FOR INSERT TO authenticated USING (true) WITH CHECK (true);
                 </code>
               </li>
             </ol>
